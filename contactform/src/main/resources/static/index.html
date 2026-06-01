@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <h1>Contact Us</h1>
+        <p>Fill out the form below and we will get back to you soon.</p>
+      </div>
+
+      <form action="/submit" method="post">
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Your Name"
+          pattern="[A-Za-z ]+"
+          title="Only alphabets and spaces allowed"
+          required
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Your Email"
+          required
+        />
+
+        <textarea
+          name="message"
+          placeholder="Enter Message (Max 100 words)"
+          required
+        ></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        let message = document.querySelector("textarea").value.trim();
+
+        let words = message.split(/\s+/).filter((word) => word.length > 0);
+
+        if (words.length > 100) {
+          alert("Message must be less than 100 words");
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
